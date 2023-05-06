@@ -8,36 +8,17 @@ const preMovie=async()=> {
         },3000);
     });
     
-    const getPopcorn = new Promise((resolve, reject)=>resolve('popcorn'));
+    const getPopcorn = new Promise((resolve, reject)=>resolve('popcorn '));
 
-    const getButter = new Promise((resolve,reject)=>resolve('butter'));
+    const getCandy = new Promise((resolve,reject)=>resolve('candy '));
     
     const getColdDrinks = new Promise((resolve,reject)=>resolve('Cold Drinks'));
 
     let ticket = await promiseWifeBringsTicks;
     
-    console.log('wife: i have '+ticket);
-    console.log('husband:we should go in');
-    console.log('wife:no i am hungry'); 
-
-    let popcorn = await getPopcorn;
-
-    console.log('husband:i got some '+popcorn);
-    console.log('husband:we should go in');
-    console.log('wife: i need butter for my popcorn');
+    let [popcorn, candy, drink] = await Promise.all([getPopcorn,getCandy,getColdDrinks])
     
-    let butter = await getButter;
-
-    console.log('husband: i got some '+butter)
-    console.log('husband:we should go in');
-    console.log('wife: i want something to drink')
-    
-    let drinks = await getColdDrinks;
-    
-    console.log('husband: i got you some '+drinks);
-    console.log('wife :thank you darling')
-    console.log('wife: lets go in, its getting late')
-    
+    console.log(popcorn+candy+drink)
     return ticket;
 };
 preMovie().then((m)=>console.log('person3: shows '+m));
